@@ -42,20 +42,49 @@ const today = new Date().toISOString().split('T')[0];
 dateEl.setAttribute('min', today);
 
 
-function updateCountdown(e) {
-    e.preventDefault();
-    // Set title and date, save to localStorage
-    countdownTitle = e.srcElement[0].value;
-    countdownDate = e.srcElement[1].value;
+// Populate Countdown / Complete UI
+function updateDOM() {
+    countdownActive = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownValue - now;
+      const days = Math.floor(distance / day);
+      const hours = Math.floor((distance % day) / hour);
+      const minutes = Math.floor((distance % hour) / minute);
+      const seconds = Math.floor((distance % minute) / second);
+      // Hide Input
+      inputContainer.hidden = true;
+      
+        countdownEl.hidden = true;
+        clearInterval(countdownActive);
+        completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
+        completeEl.hidden = false;
     
-      // Get number version of current Date, updateDOM
-      countdownValue = new Date(countdownDate).getTime();
-      updateDOM();
+        // else, show the countdown in progress
+        countdownElTitle.textContent = `${countdownTitle}`;
+        timeElements[0].textContent = `${days}`;
+        timeElements[1].textContent = `${hours}`;
+        timeElements[2].textContent = `${minutes}`;
+        timeElements[3].textContent = `${seconds}`;
+        completeEl.hidden = true;
+        countdownEl.hidden = false;
+    
+    }, second);
+  }
+
+  function reset() {
+    // Hide countdowns, show input form
+    countdownEl.hidden = true;
+    completeEl.hidden = true;
+    inputContainer.hidden = false;
+    // Stop the countdown
+    clearInterval(countdownActive);
+    // Reset values, remove localStorage item
+    countdownTitle = '';
+    countdownDate = '';
     
   }
 
 
 
-
-
 countdownForm.addEventListener('submit', updateCountdown);
+countdownBtn.addEventListener('click', reset);
