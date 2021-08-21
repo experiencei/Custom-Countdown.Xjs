@@ -17,19 +17,7 @@ function updateCountdown(e) {
     // Set title and date, save to localStorage
     countdownTitle = e.srcElement[0].value;
     countdownDate = e.srcElement[1].value;
-    savedCountdown = {
-      title: countdownTitle,
-      date: countdownDate,
-    };
-    localStorage.setItem('countdown', JSON.stringify(savedCountdown));
-    // Check if no date entered
-    if (countdownDate === '') {
-      alert('Please select a date for the countdown.');
-    } else {
-      // Get number version of current Date, updateDOM
-      countdownValue = new Date(countdownDate).getTime();
-      updateDOM();
-    }
+    
   }
 
 
