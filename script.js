@@ -1,15 +1,15 @@
-const countdownForm = document.getElementById('countdownForm');
-const inputContainer = document.getElementById('input-container');
-const dateEl = document.getElementById('date-picker');
+const countdownForm = document.getElementById('countdownForm'),
+    inputContainer = document.getElementById('input-container'),
+    dateEl = document.getElementById('date-picker');
 
-const countdownEl = document.getElementById('countdown');
-const countdownElTitle = document.getElementById('countdown-title');
-const countdownBtn = document.getElementById('countdown-button');
-const timeElements = document.querySelectorAll('span');
+const countdownEl = document.getElementById('countdown'),
+     countdownElTitle = document.getElementById('countdown-title'),
+     countdownBtn = document.getElementById('countdown-button'),
+     timeElements = document.querySelectorAll('span');
 
-const completeEl = document.getElementById('complete');
-const completeElInfo = document.getElementById('complete-info');
-const completeBtn = document.getElementById('complete-button');
+const completeEl = document.getElementById('complete'),
+ completeElInfo = document.getElementById('complete-info'),
+ completeBtn = document.getElementById('complete-button');
 
 let countdownTitle = '';
 let countdownDate = '';
